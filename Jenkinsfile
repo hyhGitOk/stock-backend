@@ -6,6 +6,11 @@ node {
 
 
     stage('build eureka server') {
-        sh "mvn -f eureka-server clean install"
+        withMaven(
+            maven: 'maven363',
+            mavenLocalRepo: '.repository') {
+                sh "mvn -f eureka-server clean install -Dmaven.test.skip=true"
+        	}
+        //sh "mvn -f eureka-server clean install"
     }
 }
