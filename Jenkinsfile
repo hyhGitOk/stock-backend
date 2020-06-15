@@ -6,8 +6,6 @@ node {
 
 
     stage('build eureka server') {
-        steps {
-            sh "mvn -f eureka-server clean install -Dmaven.test.skip=true"
-        }
+        sh "mvn -f eureka-server clean install -Dmaven.test.skip=true"
     }
 }
