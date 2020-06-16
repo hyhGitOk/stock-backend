@@ -10,10 +10,6 @@
 
 	<artifactId>eureka-server</artifactId>
 	<packaging>jar</packaging>
-	
-	<properties>
-		<docker.image.prefix>springboot</docker.image.prefix>
-    </properties>
 
 	<dependencies>
 		<dependency>
@@ -42,22 +38,17 @@
 			</plugin>
 			
 			<!-- Docker maven plugin -->
-<!-- 			<plugin>
+ 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.13</version>
 				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<dockerDirectory>src/main/docker</dockerDirectory>
-					<resources>
- 						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
+					<repository>${project.artifactId}</repository>
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
 				</configuration>
-			</plugin> -->
+			</plugin>
 		</plugins>
 	</build>
 
